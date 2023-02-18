@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rebagha <rebagha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 00:15:34 by rebagha           #+#    #+#             */
-/*   Updated: 2023/02/16 02:23:56 by rebagha          ###   ########.fr       */
+/*   Created: 2022/11/07 21:46:59 by rebagha           #+#    #+#             */
+/*   Updated: 2023/02/18 18:04:40 by rebagha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minitalk.h"
 
-void	ft_putnbr_fd(int n, int fd)
-
+void	ft_putnbr(int nb, int *count)
 {
-	long int	l;
-
-	l = n;
-	if (l < 0)
+	if (nb == -2147483648)
+		ft_putstr("-2147483648", count);
+	else if (nb < 0)
 	{
-		ft_putchar_fd('-', fd);
-		l = -l;
+		ft_putchar('-', count);
+		ft_putnbr(nb * -1, count);
 	}
-	if (l < 10)
+	else if (nb >= 10)
 	{
-		ft_putchar_fd(l + 48, fd);
+		ft_putnbr(nb / 10, count);
+		ft_putnbr(nb % 10, count);
 	}
-	if (l >= 10)
-	{
-		ft_putnbr_fd(l / 10, fd);
-		ft_putnbr_fd(l % 10, fd);
-	}
+	else if (nb >= 0 && nb <= 9)
+		ft_putchar(nb + 48, count);
 }

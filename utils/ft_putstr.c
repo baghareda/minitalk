@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rebagha <rebagha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 00:40:05 by rebagha           #+#    #+#             */
-/*   Updated: 2023/02/17 00:41:34 by rebagha          ###   ########.fr       */
+/*   Created: 2022/11/07 19:13:04 by rebagha           #+#    #+#             */
+/*   Updated: 2023/02/18 18:04:44 by rebagha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minitalk.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr(char *s, int *count)
 {
-	write (fd, &c, 1);
+	int	i;
+
+	i = 0;
+	if (s == 0)
+		ft_putstr("(null)", count);
+	else
+	{
+		while (s[i])
+		{
+			ft_putchar(s[i], count);
+			i++;
+		}
+	}
 }

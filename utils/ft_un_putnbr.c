@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_un_putnbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rebagha <rebagha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 19:03:46 by rebagha           #+#    #+#             */
-/*   Updated: 2023/02/18 18:04:36 by rebagha          ###   ########.fr       */
+/*   Created: 2022/11/08 18:25:24 by rebagha           #+#    #+#             */
+/*   Updated: 2023/02/18 18:04:47 by rebagha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minitalk.h"
 
-void	ft_putchar(char s, int *count)
+void	ft_print_uns(unsigned int nb, int *count)
 {
-	write(1, &s, 1);
-	(*count)++;
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10, count);
+		nb = nb % 10;
+	}
+	if (nb < 10)
+	{
+		ft_putchar(nb + 48, count);
+	}
 }

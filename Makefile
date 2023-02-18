@@ -6,7 +6,7 @@
 #    By: rebagha <rebagha@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 00:28:26 by rebagha           #+#    #+#              #
-#    Updated: 2023/02/17 00:57:40 by rebagha          ###   ########.fr        #
+#    Updated: 2023/02/18 18:26:00 by rebagha          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME = minitalk
 CLI_NAME = client
 SRV_NAME = server
 
-SRCS =  utils/ft_putnbr_fd.c \
-		utils/ft_atoi.c \
-		utils/ft_adress.c \
-		utils/ft_hexa.c \
-		utils/ft_putchar.c \
-		utils/ft_putchar_fd.c \
+SRCS =  utils/ft_un_putnbr.c \
+        utils/ft_atoi.c \
+        utils/ft_adress.c \
+        utils/ft_hexa.c \
+        utils/ft_printf.c \
+        utils/ft_putchar.c \
+        utils/ft_putnbr.c \
+        utils/ft_putstr.c \
 
 CLI_SRC = client.c 
 SRV_SRC = server.c
@@ -28,20 +30,20 @@ OBJ = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-all : $(CLI_NAME) $(SRV_NAME)
+all: $(CLI_NAME) $(SRV_NAME)
 
-
-$(SRV_NAME) : $(SRV_SRC) $(OBJ)
+$(SRV_NAME): $(SRV_SRC) $(OBJ)
 	cc $(FLAGS) $(OBJ) $(SRV_SRC) -o $(SRV_NAME)
 
-$(CLI_NAME) : $(CLI_SRC) $(OBJ)
+$(CLI_NAME): $(CLI_SRC) $(OBJ)
 	cc $(FLAGS) $(OBJ) $(CLI_SRC) -o $(CLI_NAME)
 
-clean :
+clean:
 	rm -f $(OBJ)
 
-fclean : clean
+fclean: clean
 	rm -f $(NAME) $(CLI_NAME) $(SRV_NAME)
 
-re : fclean all
+re: fclean all
+
 
